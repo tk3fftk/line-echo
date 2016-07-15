@@ -62,12 +62,11 @@ class App < Sinatra::Base
   # メッセージの投稿を行うPOSTのAPI
   post '/linebot/post' do
     params = JSON.parse(request.body.read)
-    puts params
 
     content = {
       contentType: 1,
       toType: 1,
-      "text": params['text']
+      "text": params['text'][0]
     }
 
     request_content = {
@@ -76,6 +75,10 @@ class App < Sinatra::Base
       eventType: "138311608800106203", # Fixed value
       content: content
     }
+
+    content_json = request_content.to_json
+    line_post(content_json)
+    "OK"
   end
 
 end

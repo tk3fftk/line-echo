@@ -62,6 +62,7 @@ class App < Sinatra::Base
   # メッセージの投稿を行うPOSTのAPI
   post '/linebot/post' do
     params = JSON.parse(request.body.read)
+    puts params
 
     content = {
       contentType: 1,

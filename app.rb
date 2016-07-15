@@ -66,7 +66,7 @@ class App < Sinatra::Base
     content = {
       contentType: 1,
       toType: 1,
-      "text": params['text'].gsub(/(,)/, "\n")
+      "text": params['text'].gsub(/(,)/, "\n").chop
     }
 
     request_content = {

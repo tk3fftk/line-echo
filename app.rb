@@ -56,7 +56,7 @@ class App < Sinatra::Base
 
     content_json = request_content.to_json
     line_post(content_json)
-    "OK"
+    return params[:text]
   end
 
   # メッセージの投稿を行うPOSTのAPI
